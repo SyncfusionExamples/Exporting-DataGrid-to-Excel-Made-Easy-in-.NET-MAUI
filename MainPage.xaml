@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MauiApp1"
+              xmlns:syncfusion="clr-namespace:Syncfusion.Maui.DataGrid;assembly=Syncfusion.Maui.DataGrid"
+             x:Class="MauiApp1.MainPage">
+    <ContentPage.BindingContext>
+        <local:OrderInfoRepository x:Name="viewModel" />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+                <Button Text="Export To Excel" WidthRequest="200" HeightRequest="50"  
+                 Clicked="ExportToExcel_Clicked" />
+            <syncfusion:SfDataGrid x:Name="dataGrid"
+                               Margin="20"
+                               VerticalOptions="FillAndExpand"
+                               ItemsSource="{Binding OrderInfoCollection}"
+                               GridLinesVisibility="Both"
+                               HeaderGridLinesVisibility="Both"
+                               AutoGenerateColumnsMode="None"
+                               SelectionMode="Multiple"
+                               ColumnWidthMode="Auto">
+                <syncfusion:SfDataGrid.Columns>
+                    <syncfusion:DataGridNumericColumn Format="D"
+                                                  HeaderText="Order ID"
+                                                  MappingName="OrderID">
+                    </syncfusion:DataGridNumericColumn>
+                    <syncfusion:DataGridTextColumn HeaderText="Customer ID"
+                                               MappingName="CustomerID">
+                    </syncfusion:DataGridTextColumn>
+                    <syncfusion:DataGridTextColumn MappingName="Customer"
+                                               HeaderText="Customer">
+                    </syncfusion:DataGridTextColumn>
+                    <syncfusion:DataGridTextColumn HeaderText="Ship City"
+                                               MappingName="ShipCity">
+                    </syncfusion:DataGridTextColumn>
+                    <syncfusion:DataGridTextColumn HeaderText="Ship Country"
+                                               MappingName="ShipCountry">
+                    </syncfusion:DataGridTextColumn>
+                </syncfusion:SfDataGrid.Columns>
+            </syncfusion:SfDataGrid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
